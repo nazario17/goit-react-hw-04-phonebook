@@ -22,7 +22,7 @@ const App = () => {
 
   const formSubmitData = data => {
     const isDuplicateName = contacts.some(contact =>
-      contacts.name.toLowerCase().includes(data.name.toLowerCase())
+      contact.name.toLowerCase().includes(data.name.toLowerCase())
     );
 
     if (isDuplicateName) {
