@@ -21,12 +21,12 @@ const App = () => {
   }, [contacts]);
 
   const formSubmitData = data => {
-    const isDuplicateName = contacts.some(contact =>
-      contact.name.toLowerCase().includes(data.name.toLowerCase())
+    const isDuplicateName = contacts.some(
+      contact => contact.name.toLowerCase() === data.name.toLowerCase()
     );
 
     if (isDuplicateName) {
-      alert(`${data.name} is alredy to contacts`);
+      alert(`${data.name} is already to contacts`);
       return;
     }
 
@@ -40,7 +40,6 @@ const App = () => {
 
   const renderFilterContacts = () => {
     const normalized = filter.toLowerCase();
-
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalized)
     );
