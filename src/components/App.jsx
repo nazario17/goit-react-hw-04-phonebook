@@ -10,19 +10,18 @@ const App = () => {
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-  }, [contacts]);
-
-  useEffect(() => {
-    const contacts = localStorage.getItem('contacts');
-    const savedContacts = JSON.parse(contacts);
+    const savedContacts = JSON.parse(localStorage.getItem('contacts'));
     if (savedContacts) {
       setContacts(savedContacts);
     }
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
+
   const formSubmitData = data => {
-    const isDuplicateName = contacts.some(contacts =>
+    const isDuplicateName = contacts.some(contact =>
       contacts.name.toLowerCase().includes(data.name.toLowerCase())
     );
 
